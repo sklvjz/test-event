@@ -21,12 +21,9 @@ fifo_read(EventSelector *es,
 {
 	char buf[255];
 	int len;
-	//struct event *ev = arg;
 
-//	fprintf(stderr, "fifo_read called with fd: %d, event: %d, arg: %p\n",
-//		fd, event, arg);
+    memset(buf,0,sizeof(buf));
 	len = read(fd, buf, sizeof(buf) - 1);
-
 	if (len == -1) 
     {
 		perror("read");
@@ -93,7 +90,7 @@ int main ( int argc, char *argv[] )
         }
     }
 
-    //Event_DestroySelector(event_selector);
+    Event_DestroySelector(event_selector);
 	return EXIT_SUCCESS;
-}		/* ----------  end of function main  ---------- */
+}
 
